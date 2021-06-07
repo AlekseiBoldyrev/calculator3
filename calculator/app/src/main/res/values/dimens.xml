@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="botton_width">99dp</dimen>
+    <dimen name="botton_height">69dp</dimen>
+</resources>

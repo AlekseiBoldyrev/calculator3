@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/num"
-    android:backgroundTint="#E4FFFFFF"
+    android:background="#CDCDCB"
     android:backgroundTintMode="screen"
     tools:context=".MainActivity">
 
@@ -15,7 +14,7 @@
         layout="@layout/activity_main_grid"
         android:layout_width="0dp"
         android:layout_height="730dp"
-        android:layout_gravity="fill_vertical"/>
+        android:layout_gravity="fill_vertical" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

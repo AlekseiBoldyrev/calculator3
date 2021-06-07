@@ -13,7 +13,8 @@
     <string name="subtract">-</string>
     <string name="multiply">*</string>
     <string name="_0">0</string>
-    <string name="comma">.</string>
+    <string name="dot">.</string>
     <string name="equals">=</string>
-    <string name="share">÷</string>
+    <string name="divide">÷</string>
+    <string name="c">C</string>
 </resources>
