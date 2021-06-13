@@ -4,197 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8424040">
+    android:background="#D8424040"
+
+    android:orientation="vertical">
+
 
 
     <GridLayout
 
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+
         android:columnCount="4">
 
 
         <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_columnSpan="4"
+            android:layout_gravity="fill_horizontal"
+            android:textSize="20dp"
+            android:background="@color/white"
+            android:gravity="bottom|right" />
+
+        <TextView
             android:id="@+id/textView"
             android:layout_width="@dimen/botton_width"
-            android:layout_height="154dp"
+            android:layout_height="150dp"
             android:layout_columnSpan="4"
             android:layout_gravity="fill_horizontal"
             android:background="@color/white"
             android:gravity="bottom|right"
 
-            android:text="0"
-            android:textSize="60dp" />
+            android:textSize="40dp" />
 
+        <com.google.android.material.button.MaterialButton
 
-        <Button
             android:id="@+id/buttonRezet"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
             android:layout_columnSpan="3"
             android:layout_gravity="fill_horizontal"
-            android:backgroundTint="#27292b"
+            android:backgroundTint="@color/dark"
             android:text="@string/c"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/buttonSum"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="#F9A825"
+            android:backgroundTint="@color/red"
             android:text="@string/sum"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width"
-            app:shapeAppearanceOverlay="@style/Theme.Design.Light" />
+            app:cornerRadius="@dimen/botton_width" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button7"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_7"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button8"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_8"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button9"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_9"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/buttonSubstract"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="#F9A825"
+            android:backgroundTint="@color/red"
             android:text="@string/subtract"
-            android:textColor="@color/black"
-            android:textSize="30dp"
             app:cornerRadius="@dimen/botton_width" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button4"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_4"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button5"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_5"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button6"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_6"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/buttonMultiply"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="#F9A825"
+            android:backgroundTint="@color/red"
             android:text="@string/multiply"
-            android:textColor="@color/black"
-            android:textSize="30dp"
             app:cornerRadius="@dimen/botton_width" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button1"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_1"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button2"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_2"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button3"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_3"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/buttonDivide"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="#F9A825"
+            android:backgroundTint="@color/red"
             android:text="@string/divide"
-            android:textColor="@color/black"
-            android:textSize="30dp"
             app:cornerRadius="@dimen/botton_width" />
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button0"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
             android:layout_columnSpan="2"
             android:layout_gravity="fill_horizontal"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/_0"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/buttonDot"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="@color/ral7024"
             android:text="@string/dot"
-            android:textSize="30dp"
-            app:cornerRadius="@dimen/botton_width" />
+            app:cornerRadius="@dimen/corner_radius" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/buttonEquals"
-            android:layout_width="@dimen/botton_width"
-            android:layout_height="@dimen/botton_height"
-            android:backgroundTint="#F9A825"
+            android:backgroundTint="@color/red"
             android:text="@string/equals"
-            android:textColor="@color/black"
-            android:textSize="30dp"
             app:cornerRadius="@dimen/botton_width" />
 
     </GridLayout>
+
+
 
 
 </FrameLayout>

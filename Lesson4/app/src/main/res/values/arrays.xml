@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string-array name="version_names">
+            <item>Doctor</item>
+            <item>Family</item>
+            <item>Supermen</item>
+        </string-array>
+        <integer-array name="version_logos">
+            <item>@drawable/android_doctor</item>
+            <item>@drawable/android_family</item>
+            <item>@drawable/android_supermen</item>
+        </integer-array>
+
+
+</resources>
