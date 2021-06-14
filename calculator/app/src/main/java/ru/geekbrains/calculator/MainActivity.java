@@ -1,5 +1,6 @@
 package ru.geekbrains.calculator;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,8 +21,16 @@ public class MainActivity extends AppCompatActivity {
     private Calc calc;
     private TextView textCalc;
     private TextView textCalc2;
-    //private TextView textCalc3;
-    //private TextView textCalc4;
+    private TextView textCalc3;
+    private static int idCodeStyle = 0;
+
+    // Имя настроек
+    private static final String NameSharedPreference = "LOGIN";
+    // Имя параметра в настройках
+    private static final String AppTheme = "APP_THEME";
+    private static final int MyNightThemeCodeStyle = 0;
+    private static final int MyDayThemeCodeStyle = 1;
+    private static final int MyCoolStyleCodeStyle = 2;
 
     // Сохранение данных
     @Override
@@ -46,29 +55,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(R.style.MyNightTheme));
+
         setContentView(R.layout.activity_main);
-        String instanceState;
-        if (savedInstanceState == null) {
-            instanceState = "Первый запуск!";
-        } else {
-            instanceState = "Повторный запуск!";
-        }
-        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
-        makeToast(instanceState + " - onCreate()");
 
 
         calc = new Calc();
         initView();
         initBotton();
+        initButtonTheme();
+        //textCalc3.setText(String.valueOf( codeStyleToStyleId(getCodeStyle(R.style.MyDayTheme))));//чтение кода
+
+//вывод текстовых сообщений о состоянии активити
+// String instanceState;
+//        if (savedInstanceState == null) {
+//            instanceState = "Первый запуск!";
+//        } else {
+//            instanceState = "Повторный запуск!";
+//        }
+//        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
+//        makeToast(instanceState + " - onCreate()");
 
     }
-
-    private void makeToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-        Log.d(TAG, message);
-    }
-
-
+    //вывод текстовых сообщений о состоянии активити
+//    private void makeToast(String message) {
+//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+//        Log.d(TAG, message);
+//    }
 
     /**
      * инициализируем поле вывода
@@ -76,31 +89,88 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         textCalc = findViewById(R.id.textView);
         textCalc2 = findViewById(R.id.textView2);
-
-        //запасные поля для вывода переменных  для проверки
-//        textCalc3 = findViewById(R.id.textView3);
-//        textCalc4 = findViewById(R.id.textView4);
+        textCalc3 = findViewById(R.id.textView3);
     }
 
+    //выводим результат на табло
     private void outputText() {
-        textCalc.setText(calc.getNumber());
-        textCalc2.setText(calc.getStrCalc());
+        textCalc.setText(calc.getNumber());//1-е табло с текущим числом и результатом вычислений
+        textCalc2.setText(calc.getStrCalc());//2-е табло с отображением всех действий
 
-//        textCalc3.setText(String.format("%.4f", calc.getCalculation()));
-//        textCalc4.setText(calc.getAction());
     }
+
+
+    private static int initThemeChooser() {
+        switch (idCodeStyle) {
+            case 0:
+                return idCodeStyle = 1;
+            case 1:
+                return idCodeStyle = 2;
+            case 2:
+                return idCodeStyle = 0;
+            default:
+                return idCodeStyle = 0;
+        }
+
+    }
+
+
+    private void initButtonTheme() {
+        Button buttonTheme = findViewById(R.id.buttonTheme);
+        buttonTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // сохраним настройки
+                //initThemeChooser();
+
+                setAppTheme(initThemeChooser());
+                // пересоздадим активити, чтобы тема применилась
+                recreate();
+            }
+        });
+    }
+
+    private void setAppTheme(int codeStyle) {
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
+        // Настройки сохраняются посредством специального класса editor.
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(AppTheme, codeStyle);
+        editor.apply();
+    }
+
+    private int getAppTheme(int codeStyle) {
+        return codeStyleToStyleId(getCodeStyle(codeStyle));
+    }
+
+    private int getCodeStyle(int codeStyle) {
+        // Работаем через специальный класс сохранения и чтения настроек
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
+        //Прочитать тему, если настройка не найдена - взять по умолчанию
+        return sharedPref.getInt(AppTheme, codeStyle);
+    }
+
+    private int codeStyleToStyleId(int codeStyle) {
+        switch (codeStyle) {
+            case MyNightThemeCodeStyle:
+                return R.style.MyNightTheme;
+            case MyDayThemeCodeStyle:
+                return R.style.MyDayTheme;
+            case MyCoolStyleCodeStyle:
+                return R.style.MyCoolStyle;
+            default:
+                return R.style.MyDayTheme;
+        }
+    }
+
 
     /**
      * О программе:
      * 1. Есть 2-а табло.
-     * На верхнем высвечивается вся информация по введенным действиям, по текущему расчету.
-     * На нижнем высвечивается вводимое число и результат.
-
-     * 2. Все вычисления и информация для табло идет в классе "Calc".
-
+     * На верхнем высвечивается вся информация по введенным действиям по текущему расчету.
+     * На нижнем высвечивается вводимое число и конечный результат.
+     * <p>
+     * 2. Все вычисления и информация для табло идут в классе "Calc".
      */
-
-
     public void initBotton() {
 
         Button button1 = findViewById(R.id.button1);
@@ -242,6 +312,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calc.clickCalc((String) buttonRezet.getText());
+                outputText();
+            }
+        });
+        Button buttonDel = findViewById(R.id.buttonDel);
+        buttonDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calc.clickCalc((String) buttonDel.getText());
                 outputText();
             }
         });

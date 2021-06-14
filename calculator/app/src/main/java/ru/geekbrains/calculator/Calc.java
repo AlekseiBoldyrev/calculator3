@@ -52,17 +52,16 @@ public class Calc implements Parcelable {
     }
 
     public Double getCalculation() {
-        return (double) Math.round(calculation * 100)/100;
+        return (double) Math.round(calculation * 100) / 100;
     }
 
     /**
      * метод на ввод числа
+     *
      * @param str
      */
     private void setNumbers(String str) {
-
         //проверка если после нажатия равно и вывода результата будет введена цифра, то старый расчет сбрасываем и делаем новый расчет
-
         if (getCalculation() != 0 && action == "" && number.length() > 0) {
             rezetAll();
             number = str;
@@ -86,6 +85,7 @@ public class Calc implements Parcelable {
 
     /**
      * метод принимает все что ввелось в калькуляторе и обрабатывает это
+     *
      * @param str
      */
     public void clickCalc(String str) {
@@ -146,6 +146,12 @@ public class Calc implements Parcelable {
             case "C":
                 rezetAll();
                 break;
+            case "del":
+                if (number.length() > 0 && action != "") {//отсутствие action, говорит о том что на табло результат - его стиратть не будем
+                    number = number.substring(0, number.length() - 1);
+                }
+
+                break;
 
             case "=":
                 //проверка на нажатие клавиши "=", если есть число и число не равно 0 и в буфере есть действие, которое можно просчитать.
@@ -163,6 +169,7 @@ public class Calc implements Parcelable {
 
     /**
      * метод при нажатии на кнопки действия
+     *
      * @param str
      */
     private void action(String str) {
@@ -172,7 +179,14 @@ public class Calc implements Parcelable {
             strCalc += String.valueOf(Double.parseDouble(number));//если в числе есть последние нули, то убираем их - преобразуя текст в число и обратно.
             strCalc += str;//формируем сводную строку для табло
             number = ""; // обнуляем текущее число
+        } else {
+            // чтобы поменять действие до ввода 2-го числа
+            setAction(str);//меняем действие
+            strCalc = strCalc.substring(0, strCalc.length() - 1);//стираем предыдущее действие из строки
+            strCalc += str;//устанавливаем новое действие
+
         }
+
     }
 
     private void rezetAll() {

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8424040"
 
     android:orientation="horizontal">
 
@@ -16,34 +15,34 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
 
-        android:columnCount="6">
+        android:columnCount="7">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="@dimen/botton_width"
             android:layout_height="30dp"
 
-            android:layout_columnSpan="6"
+            android:layout_columnSpan="7"
             android:layout_gravity="fill_horizontal"
-            android:background="@color/white"
+
             android:gravity="bottom|right"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="@dimen/botton_width"
             android:layout_height="100dp"
-            android:layout_columnSpan="6"
+            android:layout_columnSpan="7"
             android:layout_gravity="fill_horizontal"
             android:background="@color/white"
             android:gravity="bottom|right"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
 
         <com.google.android.material.button.MaterialButton
 
             android:id="@+id/buttonRezet"
-            android:layout_columnSpan="1"
+            android:layout_columnSpan="2"
             android:layout_gravity="fill_horizontal"
             android:backgroundTint="@color/dark"
             android:text="@string/c"
@@ -88,6 +87,14 @@
 
         <com.google.android.material.button.MaterialButton
 
+            android:id="@+id/buttonDel"
+            android:backgroundTint="@color/dark"
+            android:text="@string/del"
+            android:textSize="25sp"
+            app:cornerRadius="@dimen/corner_radius" />
+
+        <com.google.android.material.button.MaterialButton
+
             android:id="@+id/button1"
             android:text="@string/_1"
             app:cornerRadius="@dimen/corner_radius" />
@@ -122,9 +129,19 @@
             app:cornerRadius="@dimen/corner_radius" />
 
         <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/buttonTheme"
+            android:backgroundTint="@color/dark"
+            android:text="@string/d_n"
+
+            app:cornerRadius="@dimen/corner_radius" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button7"
             android:text="@string/_7"
             app:cornerRadius="@dimen/corner_radius" />
+
+
 
         <com.google.android.material.button.MaterialButton
 
