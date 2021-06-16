@@ -1,28 +1,28 @@
 package ru.geekbrains.calculator;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Locale;
-
+import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Constants {
 
-    private final static String TAG = "[LifeCycleActivity]";
+    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
     private final static String CALC = "Calc";
     private Calc calc;
     private TextView textCalc;
     private TextView textCalc2;
     private TextView textCalc3;
-    private static int idCodeStyle = 0;
+    private static int idCodeStyle;
+
+
 
     // Имя настроек
     private static final String NameSharedPreference = "LOGIN";
@@ -64,24 +64,11 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initBotton();
         initButtonTheme();
-        //textCalc3.setText(String.valueOf( codeStyleToStyleId(getCodeStyle(R.style.MyDayTheme))));//чтение кода
+        initButtonTheme2();
 
-//вывод текстовых сообщений о состоянии активити
-// String instanceState;
-//        if (savedInstanceState == null) {
-//            instanceState = "Первый запуск!";
-//        } else {
-//            instanceState = "Повторный запуск!";
-//        }
-//        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
-//        makeToast(instanceState + " - onCreate()");
-
+        textCalc3.setText(String.valueOf( getCodeStyle(R.style.MyDayTheme)));//вывод кода темы
+        idCodeStyle = getCodeStyle(R.style.MyDayTheme);
     }
-    //вывод текстовых сообщений о состоянии активити
-//    private void makeToast(String message) {
-//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-//        Log.d(TAG, message);
-//    }
 
     /**
      * инициализируем поле вывода
@@ -99,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private static int initThemeChooser() {
+
         switch (idCodeStyle) {
             case 0:
                 return idCodeStyle = 1;
@@ -113,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
+//установка темеы по нажатию кнопке
 
     private void initButtonTheme() {
         Button buttonTheme = findViewById(R.id.buttonTheme);
@@ -121,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // сохраним настройки
-                //initThemeChooser();
 
                 setAppTheme(initThemeChooser());
                 // пересоздадим активити, чтобы тема применилась
@@ -129,6 +115,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //установка темы по нажатию кнопке через отдельное активити
+
+    private void initButtonTheme2() {
+        Button buttonTheme2 = findViewById(R.id.buttonTheme2);
+        buttonTheme2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Чтобы стартовать активити, надо подготовить интент
+                // В данном случае это будет явный интент, поскольку здесь передаётся класс активити
+                Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+
+                // Передача данных через интент
+                runSettings.putExtra(YOUR_THEME, String.valueOf(getCodeStyle(R.style.MyDayTheme)));
+
+                // Метод стартует активити, указанную в интенте
+               //startActivity(runSettings);
+                // Усложнение. Метод стартует активити, указанную в интенте для возврата результата из нее по коду
+                startActivityForResult(runSettings, REQUEST_CODE_SETTING_ACTIVITY);
+
+
+            }
+        });
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_CODE_SETTING_ACTIVITY) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (resultCode == RESULT_OK){
+            //получаем инфо от интента
+            String text = data.getStringExtra(YOUR_THEME);
+            setAppTheme(parseInt(text));
+
+            // пересоздадим активити, чтобы тема применилась
+            recreate();
+
+        }
+    }
+
 
     private void setAppTheme(int codeStyle) {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);

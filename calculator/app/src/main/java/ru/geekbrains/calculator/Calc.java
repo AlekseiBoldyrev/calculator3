@@ -147,7 +147,7 @@ public class Calc implements Parcelable {
                 rezetAll();
                 break;
             case "del":
-                if (number.length() > 0 && action != "") {//отсутствие action, говорит о том что на табло результат - его стиратть не будем
+                if (number.length() > 0 ) {
                     number = number.substring(0, number.length() - 1);
                 }
 
