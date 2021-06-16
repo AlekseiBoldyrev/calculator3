@@ -17,4 +17,11 @@
     <string name="equals">=</string>
     <string name="divide">÷</string>
     <string name="c">C</string>
+    <string name="del">del</string>
+    <string name="d_n">th</string>
+    <string name="my_night_style">MyNightTheme</string>
+    <string name="my_day_style">MyDayTheme</string>
+    <string name="_return">ок</string>
+    <string name="set">set</string>
+
 </resources>
