@@ -4,24 +4,42 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements Constants {
     private EditText txtName;
     private Account account;
     private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
-
+    private final static String TAG = "[LifeCycleActivity]";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //для сообщений о состоянии
+        String instanceState;
+        if (savedInstanceState == null) {
+            instanceState = "Первый запуск!";
+        } else {
+            instanceState = "Повторный запуск!";
+        }
+        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()", Toast.LENGTH_SHORT).show();
+        makeToast(instanceState + " - onCreate()");
+
         account = new Account();
         initView();
+    }
+
+    //сообщения о состоянии
+    private void makeToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        Log.d(TAG, message);
     }
 
     private void initView() {
@@ -61,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
     private void populateAccount() {
         account.setName(txtName.getText().toString());
     }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode != REQUEST_CODE_SETTING_ACTIVITY) {
             super.onActivityResult(requestCode, resultCode, data);

@@ -41,6 +41,7 @@ public class SettingsActivity extends AppCompatActivity implements Constants {
         // получить данные из Intent
         String codeThemeFromCalc = getIntent().getExtras().getString(YOUR_THEME);
         initThemeChooser(codeThemeFromCalc);
+        theme = codeThemeFromCalc;//сразу зададим тему для вывода (вдруг больше ничего не будем нажимать)
         // Вывести код  в поле на экране
         codeTheme.setText(codeThemeFromCalc);
 

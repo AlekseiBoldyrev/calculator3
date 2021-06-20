@@ -179,7 +179,7 @@ public class Calc implements Parcelable {
             strCalc += String.valueOf(Double.parseDouble(number));//если в числе есть последние нули, то убираем их - преобразуя текст в число и обратно.
             strCalc += str;//формируем сводную строку для табло
             number = ""; // обнуляем текущее число
-        } else {
+        } else if (strCalc.length()>0) {
             // чтобы поменять действие до ввода 2-го числа
             setAction(str);//меняем действие
             strCalc = strCalc.substring(0, strCalc.length() - 1);//стираем предыдущее действие из строки

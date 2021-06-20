@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".NoteActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="title of the note "
+            android:inputType="textShortMessage"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textNote"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:backgroundTint="@color/light_yello"
+            android:hint="text of the note"
+            android:textSize="10sp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ok"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="ок"
+        app:backgroundTint="@color/grey" />
+</LinearLayout>
