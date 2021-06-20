@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="botton_width">99dp</dimen>
-    <dimen name="botton_width_land">125dp</dimen>
+    <dimen name="botton_width_land">105dp</dimen>
     <dimen name="botton_height">69dp</dimen>
     <dimen name="textSize">30sp</dimen>
     <dimen name="corner_radius">100dp</dimen>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="MyCoolStyle" parent="Theme.Calculator">
+        <item name="android:layout_width">@dimen/botton_width</item>
+        <item name="android:layout_height">@dimen/botton_height</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textColor">@color/design_default_color_primary</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:buttonCornerRadius">@dimen/corner_radius</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimarySurface</item>
+
+    </style>
+</resources>

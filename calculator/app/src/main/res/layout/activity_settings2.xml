@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/radioButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <RadioButton
+                android:id="@+id/radioButtonMyNightStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="стиль Ночь" />
+
+            <RadioButton
+                android:id="@+id/radioButtonMyDayStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="стиль День" />
+
+            <RadioButton
+                android:id="@+id/radioButtonMyCoolStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Крутой стиль" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReturn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_return" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
